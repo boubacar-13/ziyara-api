@@ -5,12 +5,13 @@ import { VisiteService } from 'src/visite/service/visite/visite.service';
 @Controller('visites')
 export class VisiteController {
   constructor(private readonly visiteService: VisiteService) {}
+
   @Post('/')
   create(@Body() visite: Visite): Visite {
     return this.visiteService.create(visite);
   }
   @Get('/')
-  findAll(): Visite[] {
+  findAll(): Promise<Visite[]> {
     return this.visiteService.findAll();
   }
 }
