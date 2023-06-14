@@ -1,5 +1,5 @@
 import { IsDate, IsNumber, IsString } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Visite {
@@ -21,6 +21,8 @@ export class Visite {
   @Column({ default: true })
   isFullyBooked: boolean;
 
+  //   @OneToMany((type) => User, (user) => user.visites)
+  //   users: User[];
   //   @IsString()
   //   adresse: string;
 
