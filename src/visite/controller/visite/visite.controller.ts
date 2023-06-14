@@ -1,17 +1,16 @@
-import { Controller, Get, Post } from '@nestjs/common';
-import { AppService } from 'src/app.service';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Visite } from 'src/visite/dto/visite.dto/visite/visite';
+import { VisiteService } from 'src/visite/service/visite/visite.service';
 
-@Controller('visite')
+@Controller('visites')
 export class VisiteController {
-  constructor(private readonly appService: AppService) {}
-
-  @Post()
-  create(): string {
-    return 'This action adds a new visit';
+  constructor(private readonly visiteService: VisiteService) {}
+  @Post('/')
+  create(@Body() visite: Visite): Visite {
+    return this.visiteService.create(visite);
   }
-
-  @Get()
-  findAll(): string {
-    return 'This action returns all the visits';
+  @Get('/')
+  findAll(): Visite[] {
+    return this.visiteService.findAll();
   }
 }
